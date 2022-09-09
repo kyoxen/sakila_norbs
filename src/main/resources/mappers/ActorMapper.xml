@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="sakila_main.mappers.ActorMapper" >
+
+    <resultMap id="getActor" type="sakila_main.model.ActorModel">
+        <result property="actorId" column="actor_id"/>
+        <result property="firstName" column="first_name"/>
+        <result property="lastName" column="last_name"/>
+        <result property="lastUpdate" column="last_update"/>
+    </resultMap>
+
+
+    <select id="getAllActors" resultMap="getActor">
+        SELECT *
+        FROM actor
+    </select>
+
+
+    <select id="findActor" resultMap="getActor">
+        SELECT *
+        FROM actor
+
+        <where>
+            <if test="actor_id !=null and actor_id!=''">
+               and actor_id =#{actor_id}
+            </if>
+            <if test="first_name !=null and first_name!=''">
+                and first_name =#{first_name}
+            </if>
+            <if test="last_name !=null and last_name!=''">
+                and last_name =#{last_name}
+            </if>
+        </where>
+    </select>
+
+
+</mapper>
