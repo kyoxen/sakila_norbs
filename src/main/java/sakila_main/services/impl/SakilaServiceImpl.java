@@ -16,21 +16,43 @@ public class SakilaServiceImpl implements SakilaService {
     ActorMapper actorMapper;
 
 
-    public List<ActorModel> getAllActors(){
+    public List<ActorModel> getAllActors() {
 
         return actorMapper.getAllActors();
 
     }
 
-    public List<ActorModel> findActor(ActorDTO actorDTO){
+    public List<ActorModel> findActor(ActorDTO actorDTO) {
 
         return actorMapper.findActor(actorDTO);
 
     }
 
+    public List<ActorModel> updateActorLastName() {
+
+        List<ActorModel> getActors = actorMapper.getAllActors();
+
+        //initialization
+
+        //alternate for each
+       /* getActors.forEach((v)->
+                System.out.println("Hello"));
+*/
+
+        int i = 0;
+        for (ActorModel list : getActors) {
+
+            list.setLastName("Coronado");
+            System.out.println("Name: " + getActors.get(i).getLastName() + "  id: " + getActors.get(i).getActorId());
+            actorMapper.setAllActorLastName(getActors.get(i).getActorId(), list.getLastName());
+
+            i += 1;
+        }
 
 
+        return getActors;
 
+    }
 
 
 }

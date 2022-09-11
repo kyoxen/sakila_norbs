@@ -13,4 +13,8 @@ public interface SakilaService {
 
     List<ActorModel> findActor(ActorDTO actorDTO);
 
+    List<ActorModel>  updateActorLastName();
+
+
+
 }

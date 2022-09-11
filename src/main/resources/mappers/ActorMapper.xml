@@ -34,4 +34,15 @@
     </select>
 
 
+
+    <update id="setAllActorLastName">
+        UPDATE actor
+        SET
+        last_name = #{lastName}
+        WHERE actor_id = #{actorId}
+
+    </update>
+
+
+
 </mapper>

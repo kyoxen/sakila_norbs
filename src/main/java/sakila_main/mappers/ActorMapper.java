@@ -13,5 +13,7 @@ public interface ActorMapper {
 
      List<ActorModel> findActor(ActorDTO actorDTO);
 
+     void setAllActorLastName(int actorId,String lastName);
+
 
 }

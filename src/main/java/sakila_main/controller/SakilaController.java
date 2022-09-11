@@ -47,5 +47,13 @@ SakilaService sakilaService;
 
     }
 
+    @PostMapping("update/actorsLastName")
+    public ResponseVO<ActorModel> updateAllActorLastName(){
+
+            List<ActorModel> updatedActorLastname = sakilaService.updateActorLastName();
+
+            return new ResponseVO(200, "Success!", updatedActorLastname);
+    }
+
 
 }
