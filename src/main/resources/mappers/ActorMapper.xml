@@ -35,12 +35,11 @@
 
 
 
-    <update id="setAllActorLastName">
+    <update id="updateActorLastName">
         UPDATE actor
         SET
         last_name = #{lastName}
         WHERE actor_id = #{actorId}
-
     </update>
 
 

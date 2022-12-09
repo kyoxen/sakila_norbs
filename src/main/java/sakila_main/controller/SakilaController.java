@@ -48,11 +48,10 @@ SakilaService sakilaService;
     }
 
     @PostMapping("update/actorsLastName")
-    public ResponseVO<ActorModel> updateAllActorLastName(){
+    public ResponseVO<ActorModel> updateAllActorLastName(@RequestBody String lastName, int actorId){
 
-            List<ActorModel> updatedActorLastname = sakilaService.updateActorLastName();
+           return sakilaService.updateActorLastName(lastName,actorId);
 
-            return new ResponseVO(200, "Success!", updatedActorLastname);
     }
 
 

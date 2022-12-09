@@ -6,6 +6,7 @@ import sakila_main.dto.ActorDTO;
 import sakila_main.mappers.ActorMapper;
 import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
+import sakila_main.vo.ResponseVO;
 
 import java.util.List;
 
@@ -28,16 +29,24 @@ public class SakilaServiceImpl implements SakilaService {
 
     }
 
-    public List<ActorModel> updateActorLastName() {
+    public ResponseVO updateActorLastName(String lastName, int actorId) {
 
-        List<ActorModel> getActors = actorMapper.getAllActors();
+        int getActors = actorMapper.updateActorLastName(lastName,actorId);
+
+        if(getActors>0) {
+            return new ResponseVO(200,"Success",getActors);
+        } else {
+            return new ResponseVO(500,"Error",null);
+        }
+
+   /*     List<ActorModel> getActors = actorMapper.getAllActors();
 
         //initialization
 
         //alternate for each
-       /* getActors.forEach((v)->
+       *//* getActors.forEach((v)->
                 System.out.println("Hello"));
-*/
+*//*
 
         int i = 0;
         for (ActorModel list : getActors) {
@@ -47,10 +56,7 @@ public class SakilaServiceImpl implements SakilaService {
             actorMapper.setAllActorLastName(getActors.get(i).getActorId(), list.getLastName());
 
             i += 1;
-        }
-
-
-        return getActors;
+        }*/
 
     }
 

@@ -9,11 +9,13 @@ import java.util.List;
 @Mapper
 public interface ActorMapper {
 
-     List<ActorModel> getAllActors();
+     int updateActorLastName(String lastName, int actorId);
 
      List<ActorModel> findActor(ActorDTO actorDTO);
 
-     void setAllActorLastName(int actorId,String lastName);
+     List<ActorModel> getAllActors();
+
+    // void setAllActorLastName(int actorId,String lastName);
 
 
 }

@@ -3,6 +3,7 @@ package sakila_main.services.iface;
 import org.springframework.stereotype.Service;
 import sakila_main.dto.ActorDTO;
 import sakila_main.model.ActorModel;
+import sakila_main.vo.ResponseVO;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public interface SakilaService {
 
     List<ActorModel> findActor(ActorDTO actorDTO);
 
-    List<ActorModel>  updateActorLastName();
+    ResponseVO updateActorLastName(String lastName, int actorId);
 
 
 
