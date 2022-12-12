@@ -4,15 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="chrollo naupdate ko na">
+    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="batchInsert function">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/dto/ActorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/dto/ActorDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ResponseVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ResponseVO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/ActorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/ActorMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +88,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670582758964</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="batchInsert function">
+      <created>1670828546858</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1670828546858</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,6 +123,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="chrollo naupdate ko na" />
-    <option name="LAST_COMMIT_MESSAGE" value="chrollo naupdate ko na" />
+    <MESSAGE value="batchInsert function" />
+    <option name="LAST_COMMIT_MESSAGE" value="batchInsert function" />
   </component>
 </project>

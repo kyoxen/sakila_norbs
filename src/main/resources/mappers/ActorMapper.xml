@@ -11,11 +11,11 @@
 
 
     <insert id="batchInsert" parameterType="list">
-        INSERT INTO actor(first_name, last_name, created_at) VALUES
+        INSERT INTO actor(first_name, last_name, updated_at) VALUES
         <foreach collection="list" item="item" open="(" separator="),(" close=")">
-            #{item.firstName},
-            #{item.lastName},
-            #{item.createdAt}
+            #{item.first_name},
+            #{item.last_name},
+            #{item.last_update}
         </foreach>
     </insert>
 

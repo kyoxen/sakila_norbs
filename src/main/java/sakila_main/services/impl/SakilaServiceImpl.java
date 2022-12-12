@@ -72,16 +72,12 @@ public class SakilaServiceImpl implements SakilaService {
     public void batchInsertActor(ActorDTO actorDTO){
         String firstName = actorDTO.getFirst_name();
         String lastName = actorDTO.getLast_name();
-        String createdAt = LocalDateTime.now().toString();
-
         String [] arrNames1 = firstName.split(",");
         String [] arrNames2 = lastName.split(",");
-        String [] arrDate1 = createdAt.split(",");
 
         //list
         List<String> fName = Stream.of(arrNames1).collect(Collectors.toList());
         List<String> lName = Stream.of(arrNames2).collect(Collectors.toList());
-        List<String> cat = Stream.of(arrDate1).collect(Collectors.toList());
 
         ActorDTO acD = new ActorDTO();
 
@@ -89,7 +85,6 @@ public class SakilaServiceImpl implements SakilaService {
         for (int i = 0; i < fName.size(); i++) {
             acD.setFirst_name(fName.get(i).trim());
             acD.setLast_name(lName.get(i).trim());
-            acD.setCreated_at(LocalDateTime.parse(cat.get(i).trim()));
             acD.setLast_update("");
             actorDTOList.add(acD);
         }
