@@ -84,7 +84,6 @@ public class SakilaServiceImpl implements SakilaService {
                 actorMapper.batchDeleteByIds(list);
                 return row;
             }
-
         }
        return 0;
     }
