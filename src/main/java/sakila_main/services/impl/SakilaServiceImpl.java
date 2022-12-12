@@ -3,6 +3,7 @@ package sakila_main.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import sakila_main.dto.ActorDTO;
 import sakila_main.mappers.ActorMapper;
 import sakila_main.model.ActorModel;
@@ -10,10 +11,7 @@ import sakila_main.services.iface.SakilaService;
 import sakila_main.vo.ResponseVO;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -68,6 +66,24 @@ public class SakilaServiceImpl implements SakilaService {
 
     }
 
+
+
+    @Transactional
+    @Override
+    public List<List<Integer>> batchDeleteActor(ActorDTO actorDTO) {
+    /*   String[] actorIds = String.valueOf(actorDTO.getActor_id()).split(",");
+       List<Integer> Ids = Stream.of(actorIds).map(Integer::valueOf).collect(Collectors.toList());*/
+        List<List<Integer>> splitIds = split(actorDTO.getActorIds(),20);
+
+        for (List<Integer> list: splitIds) {
+            actorMapper.batchDeleteByIds(list);
+        }
+        return splitIds;
+    }
+
+
+   @Transactional
+   @Override
     public List<List<ActorDTO>> batchInsertActor(ActorDTO actorDTO){
         String firstName = actorDTO.getFirst_name();
         String lastName = actorDTO.getLast_name();

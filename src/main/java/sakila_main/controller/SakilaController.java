@@ -58,5 +58,9 @@ SakilaService sakilaService;
         return ResponseHelper.success(sakilaService.batchInsertActor(actorDTO));
     }
 
+    @PostMapping("batchDelete/actor")
+    public ResponseVO batchDeleteActor(@RequestBody ActorDTO actorDTO){
+        return ResponseHelper.success(sakilaService.batchDeleteActor(actorDTO));
+    }
 
 }

@@ -20,5 +20,7 @@ public interface ActorMapper {
 
      int batchInsert(@Param("list") List<ActorDTO> list);
 
+     int batchDeleteByIds(@Param("list") List<Integer> ids);
+
 
 }

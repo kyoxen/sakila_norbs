@@ -18,6 +18,14 @@
         </foreach>
     </insert>
 
+    <delete id="batchDeleteByIds">
+        DELETE FROM actor
+        WHERE actor_id IN
+        <foreach collection="list" item="item" open="(" close=")" separator=",">
+            #{item}
+        </foreach>
+    </delete>
+
 
     <select id="getAllActors" resultMap="getActor">
         SELECT *
