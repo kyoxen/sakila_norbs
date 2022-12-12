@@ -9,6 +9,7 @@ import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
 import sakila_main.vo.ResponseVO;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -67,7 +68,7 @@ public class SakilaServiceImpl implements SakilaService {
 
     }
 
-    public void batchInsertActor(ActorDTO actorDTO){
+    public List<List<ActorDTO>> batchInsertActor(ActorDTO actorDTO){
         String firstName = actorDTO.getFirst_name();
         String lastName = actorDTO.getLast_name();
         String [] arrNames1 = firstName.split(",");
@@ -77,21 +78,23 @@ public class SakilaServiceImpl implements SakilaService {
         List<String> fName = Stream.of(arrNames1).collect(Collectors.toList());
         List<String> lName = Stream.of(arrNames2).collect(Collectors.toList());
 
-        ActorDTO acD = new ActorDTO();
-
         List<ActorDTO> actorDTOList = new ArrayList<>();
         for (int i = 0; i < fName.size(); i++) {
+            ActorDTO acD = new ActorDTO();
             acD.setFirst_name(fName.get(i).trim());
             acD.setLast_name(lName.get(i).trim());
+            acD.setCreated_at(LocalDateTime.now());
             acD.setLast_update("");
             actorDTOList.add(acD);
         }
-     //   actorMapper.batchInsert(actorDTOList);
+        //actorMapper.batchInsert(actorDTOList);
 
        List<List<ActorDTO>> splitList = split(actorDTOList,20);
         for (List<ActorDTO> list : splitList) {
             actorMapper.batchInsert(list);
         }
+
+        return splitList;
     }
 
 

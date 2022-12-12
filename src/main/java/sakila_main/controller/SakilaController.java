@@ -55,8 +55,7 @@ SakilaService sakilaService;
 
     @PostMapping("batchInsert/actor")
     public ResponseVO batchInsertActor(@RequestBody ActorDTO actorDTO){
-         sakilaService.batchInsertActor(actorDTO);
-        return ResponseHelper.success();
+        return ResponseHelper.success(sakilaService.batchInsertActor(actorDTO));
     }
 
 
