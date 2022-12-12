@@ -49,7 +49,10 @@
             </if>
         </where>
     </select>
-
+    <select id="ifIdExist" resultType="java.lang.Integer">
+        select count(actor_id)
+        FROM actor where actor_id =#{id}
+    </select>
 
 
     <update id="updateActorLastName">

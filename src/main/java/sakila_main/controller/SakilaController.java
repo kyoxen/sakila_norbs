@@ -60,7 +60,11 @@ SakilaService sakilaService;
 
     @PostMapping("batchDelete/actor")
     public ResponseVO batchDeleteActor(@RequestBody ActorDTO actorDTO){
-        return ResponseHelper.success(sakilaService.batchDeleteActor(actorDTO));
+        int row = sakilaService.batchDeleteActor(actorDTO);
+
+        if(row>0) return ResponseHelper.success();
+
+        return ResponseHelper.nullData();
     }
 
 }

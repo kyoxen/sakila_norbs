@@ -4,10 +4,12 @@ package sakila_main.services.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Assert;
 import sakila_main.dto.ActorDTO;
 import sakila_main.mappers.ActorMapper;
 import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
+import sakila_main.vo.ResponseHelper;
 import sakila_main.vo.ResponseVO;
 
 import java.time.LocalDateTime;
@@ -70,15 +72,21 @@ public class SakilaServiceImpl implements SakilaService {
 
     @Transactional
     @Override
-    public List<List<Integer>> batchDeleteActor(ActorDTO actorDTO) {
+    public Integer batchDeleteActor(ActorDTO actorDTO) {
     /*   String[] actorIds = String.valueOf(actorDTO.getActor_id()).split(",");
        List<Integer> Ids = Stream.of(actorIds).map(Integer::valueOf).collect(Collectors.toList());*/
         List<List<Integer>> splitIds = split(actorDTO.getActorIds(),20);
 
         for (List<Integer> list: splitIds) {
-            actorMapper.batchDeleteByIds(list);
+            //check if id exist
+           Integer row = actorMapper.ifIdExist(list.get(0));
+            if(row>0) {
+                actorMapper.batchDeleteByIds(list);
+                return row;
+            }
+
         }
-        return splitIds;
+       return 0;
     }
 
 

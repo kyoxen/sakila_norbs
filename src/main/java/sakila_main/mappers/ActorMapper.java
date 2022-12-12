@@ -22,5 +22,7 @@ public interface ActorMapper {
 
      int batchDeleteByIds(@Param("list") List<Integer> ids);
 
+     int ifIdExist(Integer id);
+
 
 }
