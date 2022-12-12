@@ -16,6 +16,8 @@ public interface SakilaService {
 
     ResponseVO updateActorLastName(String lastName, int actorId);
 
+    void batchInsertActor(ActorDTO actorDTO);
+
 
 
 }

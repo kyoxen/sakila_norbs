@@ -1,14 +1,23 @@
 package sakila_main.services.impl;
 
+import jdk.vm.ci.meta.Local;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import sakila_main.dto.ActorDTO;
 import sakila_main.mappers.ActorMapper;
 import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
 import sakila_main.vo.ResponseVO;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 @Service
 public class SakilaServiceImpl implements SakilaService {
@@ -58,6 +67,55 @@ public class SakilaServiceImpl implements SakilaService {
             i += 1;
         }*/
 
+    }
+
+    public void batchInsertActor(ActorDTO actorDTO){
+        String firstName = actorDTO.getFirst_name();
+        String lastName = actorDTO.getLast_name();
+        String createdAt = LocalDateTime.now().toString();
+
+        String [] arrNames1 = firstName.split(",");
+        String [] arrNames2 = lastName.split(",");
+        String [] arrDate1 = createdAt.split(",");
+
+        //list
+        List<String> fName = Stream.of(arrNames1).collect(Collectors.toList());
+        List<String> lName = Stream.of(arrNames2).collect(Collectors.toList());
+        List<String> cat = Stream.of(arrDate1).collect(Collectors.toList());
+
+        ActorDTO acD = new ActorDTO();
+
+        List<ActorDTO> actorDTOList = new ArrayList<>();
+        for (int i = 0; i < fName.size(); i++) {
+            acD.setFirst_name(fName.get(i).trim());
+            acD.setLast_name(lName.get(i).trim());
+            acD.setCreated_at(LocalDateTime.parse(cat.get(i).trim()));
+            acD.setLast_update("");
+            actorDTOList.add(acD);
+        }
+     //   actorMapper.batchInsert(actorDTOList);
+
+       List<List<ActorDTO>> splitList = split(actorDTOList,20);
+        for (List<ActorDTO> list : splitList) {
+            actorMapper.batchInsert(list);
+        }
+    }
+
+
+    public static <T> List<List<T>> split (Collection<T> collection, int size) {
+        List<List<T>> result = new ArrayList<>();
+        ArrayList<T> subList = new ArrayList(size);
+
+        Object t;
+        for(Iterator var4 = collection.iterator(); var4.hasNext(); subList.add((T) t)){
+            t= var4.next();
+            if(subList.size()>=size) {
+                result.add(subList);
+                subList = new ArrayList(size);
+            }
+        }
+        result.add(subList);
+        return result;
     }
 
 

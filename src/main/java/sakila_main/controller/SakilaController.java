@@ -6,6 +6,7 @@ import sakila_main.dto.ActorDTO;
 import sakila_main.exception.ResourceNotFoundException;
 import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
+import sakila_main.vo.ResponseHelper;
 import sakila_main.vo.ResponseVO;
 
 import java.util.ArrayList;
@@ -49,9 +50,13 @@ SakilaService sakilaService;
 
     @PostMapping("update/actorsLastName")
     public ResponseVO<ActorModel> updateAllActorLastName(@RequestBody String lastName, int actorId){
-
            return sakilaService.updateActorLastName(lastName,actorId);
+    }
 
+    @PostMapping("batchInsert/actor")
+    public ResponseVO batchInsertActor(@RequestBody ActorDTO actorDTO){
+         sakilaService.batchInsertActor(actorDTO);
+        return ResponseHelper.success();
     }
 
 

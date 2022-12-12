@@ -10,6 +10,16 @@
     </resultMap>
 
 
+    <insert id="batchInsert" parameterType="list">
+        INSERT INTO actor(first_name, last_name, created_at) VALUES
+        <foreach collection="list" item="item" open="(" separator="),(" close=")">
+            #{item.firstName},
+            #{item.lastName},
+            #{item.createdAt}
+        </foreach>
+    </insert>
+
+
     <select id="getAllActors" resultMap="getActor">
         SELECT *
         FROM actor

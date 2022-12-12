@@ -1,6 +1,7 @@
 package sakila_main.mappers;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import sakila_main.dto.ActorDTO;
 import sakila_main.model.ActorModel;
 
@@ -16,6 +17,8 @@ public interface ActorMapper {
      List<ActorModel> getAllActors();
 
     // void setAllActorLastName(int actorId,String lastName);
+
+     int batchInsert(@Param("list") List<ActorDTO> list);
 
 
 }
