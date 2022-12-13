@@ -27,5 +27,7 @@ public interface ActorMapper {
 
      List<String> queryActors(@Param("list") List<Integer> ids);
 
+     int lastNameBatchUpdate(@Param("list") List<Integer> ids , String lastName);
+
 
 }

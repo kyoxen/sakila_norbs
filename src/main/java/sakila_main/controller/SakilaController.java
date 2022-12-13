@@ -78,4 +78,10 @@ SakilaService sakilaService;
     }
 
 
+    @PostMapping("batchUpdateLastName/actor")
+    public ResponseVO batchUpdateLastName(@RequestBody ActorDTO actorDTO){
+        return ResponseHelper.success(sakilaService.updateLastNameBatchUpdate(actorDTO));
+    }
+
+
 }

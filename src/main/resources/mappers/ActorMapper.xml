@@ -73,5 +73,16 @@
     </update>
 
 
+    <update id="lastNameBatchUpdate">
+        update actor
+        set last_name =#{lastName}
+       <where>
+               <foreach collection="list" close=")" open="actor_id in(" separator="," item="id">
+                   #{id}
+               </foreach>
+       </where>
+    </update>
+
+    <!--commission_date = DATE_FORMAT(#{commissionDate}, '%Y-%m')-->
 
 </mapper>

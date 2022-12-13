@@ -18,6 +18,8 @@ public interface SakilaService {
 
     List<List<ActorDTO>> batchInsertActor(ActorDTO actorDTO);
 
+    List<String> updateLastNameBatchUpdate(ActorDTO actorDTO);
+
     List<String> getActorNames(ActorDTO actorDTO);
 
     Integer batchDeleteActor(ActorDTO actorDTO);
