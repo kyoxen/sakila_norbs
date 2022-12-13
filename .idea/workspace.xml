@@ -4,13 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="batchDelete function fix">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="batchSelect">
       <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/ActorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/ActorMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670841592908</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="batchSelect">
+      <created>1670907163152</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670907163152</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -175,6 +177,7 @@
     <MESSAGE value="batchInsert function final fix" />
     <MESSAGE value="batchDelete function" />
     <MESSAGE value="batchDelete function fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="batchDelete function fix" />
+    <MESSAGE value="batchSelect" />
+    <option name="LAST_COMMIT_MESSAGE" value="batchSelect" />
   </component>
 </project>

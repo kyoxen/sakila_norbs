@@ -1,6 +1,7 @@
 package sakila_main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import sakila_main.dto.ActorDTO;
 import sakila_main.exception.ResourceNotFoundException;
@@ -68,6 +69,7 @@ SakilaService sakilaService;
     }
     @PostMapping("batchSelect/actor")
     public ResponseVO getActorNames(@RequestBody ActorDTO actorDTO){
+        Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter an ids!");
         return ResponseHelper.success(sakilaService.getActorNames(actorDTO));
     }
 
