@@ -73,7 +73,7 @@ public class SakilaServiceImpl implements SakilaService {
 
 
 
-    @Transactional
+
     @Override
     public Integer batchDeleteActor(ActorDTO actorDTO) {
     /*   String[] actorIds = String.valueOf(actorDTO.getActor_id()).split(",");
@@ -92,7 +92,6 @@ public class SakilaServiceImpl implements SakilaService {
     }
 
 
-   @Transactional
    @Override
     public List<List<ActorDTO>> batchInsertActor(ActorDTO actorDTO){
         String firstName = actorDTO.getFirst_name();
