@@ -1,6 +1,7 @@
 package sakila_main.services.impl;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,6 +21,7 @@ import java.util.stream.Stream;
 
 
 @Service
+@Slf4j
 public class SakilaServiceImpl implements SakilaService {
 
     @Autowired
@@ -130,6 +132,7 @@ public class SakilaServiceImpl implements SakilaService {
         List<List<Integer>> splitIds = split(actorDTO.getActorIds(),20);
         for (List<Integer> list: splitIds) {
             actorMapper.lastNameBatchUpdate(list,lastName);
+            log.info("actor Ids: {} lastName:{}", list,lastName);
         }
 
         return getActorNames(actorDTO);

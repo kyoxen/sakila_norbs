@@ -1,6 +1,6 @@
 package sakila_main.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import sakila_main.dto.ActorDTO;
@@ -10,15 +10,14 @@ import sakila_main.services.iface.SakilaService;
 import sakila_main.vo.ResponseHelper;
 import sakila_main.vo.ResponseVO;
 
-import java.util.ArrayList;
+import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/sakila/")
 public class SakilaController {
 
-
-    @Autowired
+    @Resource
 SakilaService sakilaService;
 
     @GetMapping("list/actor")
@@ -76,6 +75,7 @@ SakilaService sakilaService;
         //   "actorIds" :[]
         //}
     }
+
 
 
     @PostMapping("batchUpdateLastName/actor")
