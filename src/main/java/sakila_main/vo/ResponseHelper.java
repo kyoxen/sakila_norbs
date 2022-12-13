@@ -30,6 +30,11 @@ public class ResponseHelper {
         return new ResponseVO(ParentCommonStatusCode.NULL_VALUE);
     }
 
+
+    public static<T> ResponseVO<T> nullData(T data) {
+        return new ResponseVO(200,"No Data Exist!", data);
+    }
+
     public static<T> ResponseVO<T> forbidden() {
         return new ResponseVO(ParentCommonStatusCode.FORBIDDEN);
     }

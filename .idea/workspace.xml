@@ -4,9 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="generate 1000 firstname and lastname for batchInsert">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="remove transactional">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/SakilaApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/SakilaApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ResponseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ResponseHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +176,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670909590902</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="remove transactional">
+      <created>1670918450992</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1670918450992</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -210,6 +220,7 @@
     <MESSAGE value="add assertion" />
     <MESSAGE value="batchUpdate actor LastName" />
     <MESSAGE value="change autowired to resource and add log info" />
-    <option name="LAST_COMMIT_MESSAGE" value="change autowired to resource and add log info" />
+    <MESSAGE value="remove transactional" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove transactional" />
   </component>
 </project>

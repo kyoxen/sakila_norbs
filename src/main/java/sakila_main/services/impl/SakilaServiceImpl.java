@@ -78,14 +78,15 @@ public class SakilaServiceImpl implements SakilaService {
     public Integer batchDeleteActor(ActorDTO actorDTO) {
     /*   String[] actorIds = String.valueOf(actorDTO.getActor_id()).split(",");
        List<Integer> Ids = Stream.of(actorIds).map(Integer::valueOf).collect(Collectors.toList());*/
-        List<List<Integer>> splitIds = split(actorDTO.getActorIds(),20);
 
-        for (List<Integer> list: splitIds) {
-            //check if id exist
-           Integer row = actorMapper.ifIdExist(list.get(0));
-            if(row>0) {
-                actorMapper.batchDeleteByIds(list);
-                return row;
+        List<Integer> splitIds = actorDTO.getActorIds();
+        //check if id exist
+        for (Integer i: splitIds) {
+           Integer row = actorMapper.ifIdExist(i);
+            if(row==0) {
+                return i;
+            } else {
+                actorMapper.batchDeleteByIds(splitIds);
             }
         }
        return 0;
