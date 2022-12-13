@@ -12,9 +12,9 @@ public interface SakilaService {
 
     List<ActorModel> getAllActors();
 
-    List<ActorModel> findActor(ActorDTO actorDTO);
+    ActorModel findActor(ActorDTO actorDTO);
 
-    ResponseVO updateActorLastName(String lastName, int actorId);
+    ActorModel updateActorLastName(ActorDTO actorDTO);
 
     List<List<ActorDTO>> batchInsertActor(ActorDTO actorDTO);
 

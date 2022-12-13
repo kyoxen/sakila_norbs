@@ -4,21 +4,16 @@ package sakila_main.services.impl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import sakila_main.dto.ActorDTO;
 import sakila_main.mappers.ActorMapper;
 import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
 import sakila_main.utils.ListSplitUtil;
-import sakila_main.vo.ResponseHelper;
-import sakila_main.vo.ResponseVO;
-
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-
 
 @Service
 @Slf4j
@@ -29,26 +24,18 @@ public class SakilaServiceImpl implements SakilaService {
 
 
     public List<ActorModel> getAllActors() {
-
         return actorMapper.getAllActors();
-
     }
 
-    public List<ActorModel> findActor(ActorDTO actorDTO) {
-
+    public ActorModel findActor(ActorDTO actorDTO) {
         return actorMapper.findActor(actorDTO);
-
     }
 
-    public ResponseVO updateActorLastName(String lastName, int actorId) {
+    public ActorModel updateActorLastName(ActorDTO actorDTO) {
+        int getActors = actorMapper.updateActorLastName(actorDTO.getLast_name(), actorDTO.getActor_id());
+        ActorModel actorModels =actorMapper.findActor(actorDTO);
 
-        int getActors = actorMapper.updateActorLastName(lastName,actorId);
-
-        if(getActors>0) {
-            return new ResponseVO(200,"Success",getActors);
-        } else {
-            return new ResponseVO(500,"Error",null);
-        }
+        return actorModels;
 
    /*     List<ActorModel> getActors = actorMapper.getAllActors();
 
@@ -119,10 +106,8 @@ public class SakilaServiceImpl implements SakilaService {
         for (List<ActorDTO> list : splitList) {
             actorMapper.batchInsert(list);
         }
-
         return splitList;
     }
-
 
     public List<String> updateLastNameBatchUpdate(ActorDTO actorDTO) {
         Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids!");
@@ -134,12 +119,8 @@ public class SakilaServiceImpl implements SakilaService {
             actorMapper.lastNameBatchUpdate(list,lastName);
             log.info("actor Ids: {} lastName:{}", list,lastName);
         }
-
         return getActorNames(actorDTO);
     }
-
-
-
 
     public List<String> getActorNames(ActorDTO actorDTO){
         List<Integer> actorIds = actorDTO.getActorIds();

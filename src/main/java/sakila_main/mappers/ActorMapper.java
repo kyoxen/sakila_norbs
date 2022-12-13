@@ -12,7 +12,7 @@ public interface ActorMapper {
 
      int updateActorLastName(String lastName, int actorId);
 
-     List<ActorModel> findActor(ActorDTO actorDTO);
+     ActorModel findActor(ActorDTO actorDTO);
 
      List<ActorModel> getAllActors();
 

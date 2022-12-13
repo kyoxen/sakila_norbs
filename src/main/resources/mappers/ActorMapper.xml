@@ -49,11 +49,11 @@
             </if>
         </where>
     </select>
+
     <select id="ifIdExist" resultType="java.lang.Integer">
         select count(actor_id)
         FROM actor where actor_id =#{id}
     </select>
-
 
     <select id="queryActors" resultType="java.lang.String">
         select CONCAT_WS(" ",first_name,last_name) as actorName
@@ -64,14 +64,12 @@
         </foreach>
     </select>
 
-
     <update id="updateActorLastName">
         UPDATE actor
         SET
         last_name = #{lastName}
         WHERE actor_id = #{actorId}
     </update>
-
 
     <update id="lastNameBatchUpdate">
         update actor
