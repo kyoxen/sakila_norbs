@@ -9,6 +9,7 @@ import sakila_main.dto.ActorDTO;
 import sakila_main.mappers.ActorMapper;
 import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
+import sakila_main.utils.ListSplitUtil;
 import sakila_main.vo.ResponseHelper;
 import sakila_main.vo.ResponseVO;
 
@@ -118,6 +119,19 @@ public class SakilaServiceImpl implements SakilaService {
         }
 
         return splitList;
+    }
+
+
+
+    public List<String> getActorNames(ActorDTO actorDTO){
+        List<Integer> actorIds = actorDTO.getActorIds();
+        List<List<Integer>> actors = ListSplitUtil.split(actorIds, 20);
+        List<String> result = new ArrayList<>();
+        for (List<Integer> list : actors) {
+            List<String> ids = actorMapper.queryActors(list);
+                result.addAll(ids);
+        }
+        return result;
     }
 
 

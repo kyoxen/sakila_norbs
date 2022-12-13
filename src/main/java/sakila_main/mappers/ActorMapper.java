@@ -25,4 +25,7 @@ public interface ActorMapper {
      int ifIdExist(Integer id);
 
 
+     List<String> queryActors(@Param("list") List<Integer> ids);
+
+
 }

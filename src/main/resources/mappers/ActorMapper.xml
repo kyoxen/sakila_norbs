@@ -55,6 +55,16 @@
     </select>
 
 
+    <select id="queryActors" resultType="java.lang.String">
+        select CONCAT_WS(" ",first_name,last_name) as actorName
+        from actor
+        where
+        <foreach collection="list" close=")" open="actor_id in(" separator="," item="id">
+            #{id}
+        </foreach>
+    </select>
+
+
     <update id="updateActorLastName">
         UPDATE actor
         SET

@@ -66,5 +66,10 @@ SakilaService sakilaService;
 
         return ResponseHelper.nullData();
     }
+    @PostMapping("batchSelect/actor")
+    public ResponseVO getActorNames(@RequestBody ActorDTO actorDTO){
+        return ResponseHelper.success(sakilaService.getActorNames(actorDTO));
+    }
+
 
 }
