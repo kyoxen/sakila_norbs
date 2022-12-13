@@ -71,6 +71,10 @@ SakilaService sakilaService;
     public ResponseVO getActorNames(@RequestBody ActorDTO actorDTO){
         Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter an ids!");
         return ResponseHelper.success(sakilaService.getActorNames(actorDTO));
+        //request body parameter
+        //{
+        //   "actorIds" :[]
+        //}
     }
 
 
