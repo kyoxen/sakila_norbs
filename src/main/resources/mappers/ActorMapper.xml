@@ -90,6 +90,17 @@
         ORDER BY actor_id DESC LIMIT 1
     </select>
 
+    <sql id="Base_Column_List">
+            id, name
+    </sql>
+
+    <select id="sample" resultType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM actor
+        ORDER BY actor_id DESC LIMIT 1
+    </select>
+
 
     <update id="updateActorLastName">
         UPDATE actor
