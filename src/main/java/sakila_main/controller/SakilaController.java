@@ -46,9 +46,12 @@ public class SakilaController {
 
     @PostMapping("batchInsert/actor")
     public ResponseVO batchInsertActor(@RequestBody ActorDTO actorDTO) {
-        return ResponseHelper.success(sakilaService.batchInsertActor(actorDTO));
+        List<List<ActorDTO>> returnList = sakilaService.batchInsertActor(actorDTO);
+        if (returnList.get(0).isEmpty()) {
+            return ResponseHelper.userExist(returnList);
+        }
+        return ResponseHelper.success(returnList);
     }
-
     @PostMapping("batchDelete/actor")
     public ResponseVO batchDeleteActor(@RequestBody ActorDTO actorDTO) {
         int row = sakilaService.batchDeleteActor(actorDTO);
