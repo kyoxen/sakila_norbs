@@ -87,43 +87,22 @@ public class SakilaServiceImpl implements SakilaService {
         String [] arrNames1 = firstName.split(",");
         String [] arrNames2 = lastName.split(",");
 
-        //check if name exist
-       List<ActorDTO> existingName = new ArrayList<>();
+       //check if firstname and last name does not exist
        for (String firstnames : arrNames1) {
            for (String lastnames : arrNames2) {
                boolean isExist = actorMapper.checkBothFirstLastNames(firstnames, lastnames);
-               if (isExist) {
-                   ActorDTO actorDTO1 = new ActorDTO();
-                   actorDTO1.setFirst_name(firstnames);
-                   actorDTO1.setLast_name(lastnames);
-                   existingName.add(actorDTO1);
-                   break;
-               } else {
-                   //if firstname and last name does not exist
-                   List<String> fName = Stream.of(arrNames1).collect(Collectors.toList());
-                   List<String> lName = Stream.of(arrNames2).collect(Collectors.toList());
-
-                   List<ActorDTO> actorDTOList = new ArrayList<>();
-                   for (int i = 0; i < fName.size(); i++) {
+               if (!isExist) {
                        ActorDTO acD = new ActorDTO();
-                       acD.setFirst_name(fName.get(i).trim());
-                       acD.setLast_name(lName.get(i).trim());
+                       acD.setFirst_name(firstnames);
+                       acD.setLast_name(lastnames);
                        acD.setCreated_at(LocalDateTime.now());
                        acD.setLast_update("");
-                       actorDTOList.add(acD);
-                   }
-                   //actorMapper.batchInsert(actorDTOList);
-
-                   List<List<ActorDTO>> splitList = split(actorDTOList, 20);
-                   for (List<ActorDTO> list : splitList) {
-                       actorMapper.batchInsert(list);
-                   }
+                       actorMapper.insertSelective(acD);
                    return 1;
+               } else {
+                   return 0;
                }
            }
-         /*  List<List<ActorDTO>> returnList = new ArrayList<>();
-           returnList.add(existingName);
-           System.out.println(returnList);*/
        }
        return 0;
    }

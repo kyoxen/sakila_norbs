@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="batch Insert check if user exist fix final">
+    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="batch Insert check if user exist fix final v2">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" afterDir="false" />
@@ -225,7 +225,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670988863753</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="batch Insert check if user exist fix final v2">
+      <created>1670994890462</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1670994890462</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -268,7 +275,8 @@
     <MESSAGE value="optimized code" />
     <MESSAGE value="batch Insert check if user exist" />
     <MESSAGE value="batch Insert check if user exist fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="batch Insert check if user exist fix" />
+    <MESSAGE value="batch Insert check if user exist fix final v2" />
+    <option name="LAST_COMMIT_MESSAGE" value="batch Insert check if user exist fix final v2" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

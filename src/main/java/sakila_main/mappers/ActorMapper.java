@@ -26,6 +26,8 @@ public interface ActorMapper {
 
      int batchInsert(@Param("list") List<ActorDTO> list);
 
+     int insertSelective(ActorDTO actorDTO);
+
      int batchDeleteByIds(@Param("list") List<Integer> ids);
 
      int ifIdExist(Integer id);

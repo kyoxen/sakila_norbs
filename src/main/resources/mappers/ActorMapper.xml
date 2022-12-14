@@ -18,6 +18,11 @@
         </foreach>
     </insert>
 
+    <insert id="insertSelective">
+        INSERT INTO actor(first_name,last_name)
+        VALUES (#{first_name},#{last_name})
+    </insert>
+
     <delete id="batchDeleteByIds">
         DELETE FROM actor
         WHERE actor_id IN
