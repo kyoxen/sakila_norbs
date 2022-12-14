@@ -95,9 +95,10 @@ public class SakilaServiceImpl implements SakilaService {
                String lName = actorMapper.checkLastName(lastnames);
                System.out.println("sheesh"+lName);
                if(fName.equals(firstName) && lName.equals(lastnames)){
-                   return Collections.emptyList();
+                   break;
                }
            }
+           return Collections.emptyList();
 
        }
 
