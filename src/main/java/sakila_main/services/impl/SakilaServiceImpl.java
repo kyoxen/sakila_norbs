@@ -89,47 +89,44 @@ public class SakilaServiceImpl implements SakilaService {
 
         //check if name exist
        List<ActorDTO> existingName = new ArrayList<>();
-       for (String firstnames: arrNames1) {
-           String fName = actorMapper.checkFirstName(firstnames);
-           if(fName!=null){
-               for (String lastnames: arrNames2) {
-                   String lName = actorMapper.checkLastName(lastnames);
-                   if(fName.equals(firstnames) && lName.equals(lastnames)){
-                       ActorDTO actorDTO1 = new ActorDTO();
-                       actorDTO1.setFirst_name(firstnames);
-                       actorDTO1.setLast_name(lastnames);
-                       existingName.add(actorDTO1);
-                       break;
+       for (String firstnames : arrNames1) {
+           for (String lastnames : arrNames2) {
+               boolean isExist = actorMapper.checkBothFirstLastNames(firstnames, lastnames);
+               if (isExist) {
+                   ActorDTO actorDTO1 = new ActorDTO();
+                   actorDTO1.setFirst_name(firstnames);
+                   actorDTO1.setLast_name(lastnames);
+                   existingName.add(actorDTO1);
+                   break;
+               } else {
+                   //if firstname and last name does not exist
+                   List<String> fName = Stream.of(arrNames1).collect(Collectors.toList());
+                   List<String> lName = Stream.of(arrNames2).collect(Collectors.toList());
+
+                   List<ActorDTO> actorDTOList = new ArrayList<>();
+                   for (int i = 0; i < fName.size(); i++) {
+                       ActorDTO acD = new ActorDTO();
+                       acD.setFirst_name(fName.get(i).trim());
+                       acD.setLast_name(lName.get(i).trim());
+                       acD.setCreated_at(LocalDateTime.now());
+                       acD.setLast_update("");
+                       actorDTOList.add(acD);
                    }
+                   //actorMapper.batchInsert(actorDTOList);
+
+                   List<List<ActorDTO>> splitList = split(actorDTOList, 20);
+                   for (List<ActorDTO> list : splitList) {
+                       actorMapper.batchInsert(list);
+                   }
+                   return 1;
                }
-               List<List<ActorDTO>> returnList = new ArrayList<>();
-               returnList.add(existingName);
-               System.out.println(returnList);
-               return 0;
            }
+         /*  List<List<ActorDTO>> returnList = new ArrayList<>();
+           returnList.add(existingName);
+           System.out.println(returnList);*/
        }
-
-        //list
-        List<String> fName = Stream.of(arrNames1).collect(Collectors.toList());
-        List<String> lName = Stream.of(arrNames2).collect(Collectors.toList());
-
-        List<ActorDTO> actorDTOList = new ArrayList<>();
-        for (int i = 0; i < fName.size(); i++) {
-            ActorDTO acD = new ActorDTO();
-            acD.setFirst_name(fName.get(i).trim());
-            acD.setLast_name(lName.get(i).trim());
-            acD.setCreated_at(LocalDateTime.now());
-            acD.setLast_update("");
-            actorDTOList.add(acD);
-        }
-        //actorMapper.batchInsert(actorDTOList);
-
-       List<List<ActorDTO>> splitList = split(actorDTOList,20);
-        for (List<ActorDTO> list : splitList) {
-            actorMapper.batchInsert(list);
-        }
-        return 1;
-    }
+       return 0;
+   }
 
     public List<String> updateLastNameBatchUpdate(ActorDTO actorDTO) {
         Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids!");

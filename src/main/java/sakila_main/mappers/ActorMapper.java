@@ -14,6 +14,8 @@ public interface ActorMapper {
 
      ActorModel findActor(ActorDTO actorDTO);
 
+     Boolean checkBothFirstLastNames(String firstname,String lastname);
+
      String checkFirstName(String firstname);
 
      String checkLastName(String lastname);

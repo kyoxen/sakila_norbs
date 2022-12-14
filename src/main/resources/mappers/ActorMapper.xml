@@ -74,7 +74,11 @@
         SELECT last_name FROM
         actor WHERE last_name=#{lastname}
     </select>
-
+    <select id="checkBothFirstLastNames" resultType="java.lang.Boolean">
+        SELECT EXISTS (
+        select first_name, last_name from actor where first_name=#{firstname} and last_name=#{lastname}
+        ) as boolean
+    </select>
 
 
     <update id="updateActorLastName">
