@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="batch Insert check if user exist">
+    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="batch Insert check if user exist fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670987256130</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="batch Insert check if user exist fix">
+      <created>1670988863753</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1670988863753</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -257,7 +267,8 @@
     <MESSAGE value="add utils" />
     <MESSAGE value="optimized code" />
     <MESSAGE value="batch Insert check if user exist" />
-    <option name="LAST_COMMIT_MESSAGE" value="batch Insert check if user exist" />
+    <MESSAGE value="batch Insert check if user exist fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="batch Insert check if user exist fix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

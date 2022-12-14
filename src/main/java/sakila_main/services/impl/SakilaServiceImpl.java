@@ -81,27 +81,33 @@ public class SakilaServiceImpl implements SakilaService {
 
 
    @Override
-    public List<List<ActorDTO>> batchInsertActor(ActorDTO actorDTO){
+    public Integer batchInsertActor(ActorDTO actorDTO){
         String firstName = actorDTO.getFirst_name();
         String lastName = actorDTO.getLast_name();
         String [] arrNames1 = firstName.split(",");
         String [] arrNames2 = lastName.split(",");
 
         //check if name exist
+       List<ActorDTO> existingName = new ArrayList<>();
        for (String firstnames: arrNames1) {
            String fName = actorMapper.checkFirstName(firstnames);
-           System.out.println("fName" + fName);
-           for (String lastnames: arrNames2) {
-               String lName = actorMapper.checkLastName(lastnames);
-               System.out.println("sheesh"+lName);
-               if(fName.equals(firstName) && lName.equals(lastnames)){
-                   break;
+           if(fName!=null){
+               for (String lastnames: arrNames2) {
+                   String lName = actorMapper.checkLastName(lastnames);
+                   if(fName.equals(firstnames) && lName.equals(lastnames)){
+                       ActorDTO actorDTO1 = new ActorDTO();
+                       actorDTO1.setFirst_name(firstnames);
+                       actorDTO1.setLast_name(lastnames);
+                       existingName.add(actorDTO1);
+                       break;
+                   }
                }
+               List<List<ActorDTO>> returnList = new ArrayList<>();
+               returnList.add(existingName);
+               System.out.println(returnList);
+               return 0;
            }
-           return Collections.emptyList();
-
        }
-
 
         //list
         List<String> fName = Stream.of(arrNames1).collect(Collectors.toList());
@@ -122,7 +128,7 @@ public class SakilaServiceImpl implements SakilaService {
         for (List<ActorDTO> list : splitList) {
             actorMapper.batchInsert(list);
         }
-        return splitList;
+        return 1;
     }
 
     public List<String> updateLastNameBatchUpdate(ActorDTO actorDTO) {

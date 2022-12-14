@@ -3,6 +3,7 @@ package sakila_main.controller;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import sakila_main.dto.ActorDTO;
+import sakila_main.mappers.ActorMapper;
 import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
 import sakila_main.vo.ResponseHelper;
@@ -17,6 +18,8 @@ public class SakilaController {
 
     @Resource
     SakilaService sakilaService;
+    @Resource
+    ActorMapper actorMapper;
 
     @GetMapping("list/actor")
     public ResponseVO getAllActors() {
@@ -43,11 +46,11 @@ public class SakilaController {
 
     @PostMapping("batchInsert/actor")
     public ResponseVO batchInsertActor(@RequestBody ActorDTO actorDTO) {
-        List<List<ActorDTO>> returnList = sakilaService.batchInsertActor(actorDTO);
-        if(returnList.isEmpty()){
-            return ResponseHelper.userExist(returnList);
+        Integer returnList = sakilaService.batchInsertActor(actorDTO);
+        if(returnList>0){
+            return ResponseHelper.success(actorMapper.findActor(actorDTO));
         }
-        return ResponseHelper.success();
+        return ResponseHelper.userExist(returnList);
     }
 
     @PostMapping("batchDelete/actor")
