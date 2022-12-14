@@ -16,7 +16,7 @@ public interface SakilaService {
 
     ActorModel updateActorLastName(ActorDTO actorDTO);
 
-    List<List<ActorDTO>> batchInsertActor(ActorDTO actorDTO);
+    ResponseVO batchInsertActor(ActorDTO actorDTO);
 
     List<String> updateLastNameBatchUpdate(ActorDTO actorDTO);
 

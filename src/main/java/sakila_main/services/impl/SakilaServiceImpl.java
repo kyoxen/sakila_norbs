@@ -1,6 +1,8 @@
 package sakila_main.services.impl;
 
 
+import cn.hutool.core.util.StrUtil;
+import com.mysql.cj.util.StringUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,7 +11,13 @@ import sakila_main.dto.ActorDTO;
 import sakila_main.mappers.ActorMapper;
 import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
+import sakila_main.utils.CollectionUtil;
 import sakila_main.utils.ListSplitUtil;
+import sakila_main.vo.ParentCommonStatusCode;
+import sakila_main.vo.ResponseHelper;
+import sakila_main.vo.ResponseVO;
+
+import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -81,18 +89,22 @@ public class SakilaServiceImpl implements SakilaService {
 
 
    @Override
-    public List<List<ActorDTO>> batchInsertActor(ActorDTO actorDTO){
+    public ResponseVO batchInsertActor(ActorDTO actorDTO){
         String firstName = actorDTO.getFirst_name();
         String lastName = actorDTO.getLast_name();
         String [] arrNames1 = firstName.split(",");
         String [] arrNames2 = lastName.split(",");
 
+        String errorMsg=verifyNames(Arrays.stream(arrNames1).collect(Collectors.toList()), Arrays.stream(arrNames2).collect(Collectors.toList()));
+        if(!StringUtils.isNullOrEmpty(errorMsg) && errorMsg.length()>0){
+            return new ResponseVO(ParentCommonStatusCode.FAILURE.getCode(),errorMsg,errorMsg);
+        }
 
        List<ActorDTO> actorDTOList = new ArrayList<>();
        //check if firstname and last name does not exist
        for (int i = 0; i < arrNames1.length; i++) {
-           boolean isExist = actorMapper.checkBothFirstLastNames(arrNames1[i], arrNames2[i]);
-           if (!isExist) {
+          // boolean isExist = actorMapper.checkBothFirstLastNames(arrNames1[i], arrNames2[i]);
+          // if (!isExist) {
                ActorDTO acD = new ActorDTO();
                acD.setActor_id(actorMapper.countIds()+1);
                acD.setFirst_name(arrNames1[i]);
@@ -101,12 +113,31 @@ public class SakilaServiceImpl implements SakilaService {
                acD.setLast_update("");
                actorDTOList.add(acD);
                actorMapper.insertSelective(acD);
-           }
+        //   }
        }
        List<List<ActorDTO>> returnList = new ArrayList<>();
        returnList.add(actorDTOList);
-       return returnList;
+       return ResponseHelper.success(returnList);
    }
+
+    private String verifyNames(List<String> firstName, List<String> lastName) {
+        List<ActorDTO> listNamesInfo = actorMapper.verifyNames(firstName, lastName);
+        Map<String, List<ActorDTO>> mapFirstNamesInfo = listNamesInfo.stream().collect(Collectors.groupingBy(ActorDTO::getFirst_name));
+        Map<String, List<ActorDTO>> mapLastNamesInfo = listNamesInfo.stream().collect(Collectors.groupingBy(ActorDTO::getLast_name));
+
+        StringBuffer errorMsg = new StringBuffer();
+        for (String fName : firstName) {
+            if (!CollectionUtil.isEmpty(mapFirstNamesInfo.get(fName))) {
+                errorMsg.append(StrUtil.format("First name [{}] already exist! ", fName));
+            }
+        }
+        for (String lName : lastName) {
+            if (!CollectionUtil.isEmpty(mapLastNamesInfo.get(lName))) {
+                errorMsg.append(StrUtil.format("Last name [{}] already exist! ", lName));
+            }
+        }
+        return errorMsg.toString();
+    }
 
     public List<String> updateLastNameBatchUpdate(ActorDTO actorDTO) {
         Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids!");

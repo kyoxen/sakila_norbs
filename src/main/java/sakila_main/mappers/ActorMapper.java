@@ -24,6 +24,8 @@ public interface ActorMapper {
 
      Integer countIds();
 
+     List<ActorDTO> verifyNames(@Param("fName") List<String> fName, @Param("lName")List<String> lName);
+
     // void setAllActorLastName(int actorId,String lastName);
 
      int batchInsert(@Param("list") List<ActorDTO> list);

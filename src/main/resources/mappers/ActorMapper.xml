@@ -9,6 +9,13 @@
         <result property="lastUpdate" column="last_update"/>
     </resultMap>
 
+    <resultMap id="getActorDTO" type="sakila_main.dto.ActorDTO">
+        <result property="actor_id" column="actor_id"/>
+        <result property="first_name" column="first_name"/>
+        <result property="last_name" column="last_name"/>
+        <result property="last_update" column="last_update"/>
+    </resultMap>
+
 
     <insert id="batchInsert" parameterType="list">
         INSERT INTO actor(first_name, last_name) VALUES
@@ -99,6 +106,22 @@
         <include refid="Base_Column_List"/>
         FROM actor
         ORDER BY actor_id DESC LIMIT 1
+    </select>
+
+
+    <select id="verifyNames" resultMap="getActorDTO">
+        select first_name, last_name
+        FROM actor
+        <where>
+            first_name in
+            <foreach collection="fName" item="item" index="index" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+            and last_name in
+            <foreach collection="lName" item="item" index="index" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </where>
     </select>
 
 
