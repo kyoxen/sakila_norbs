@@ -95,13 +95,13 @@ public class SakilaServiceImpl implements SakilaService {
         String [] arrNames1 = firstName.split(",");
         String [] arrNames2 = lastName.split(",");
 
+       //check if firstname and last name does not exist
         String errorMsg=verifyNames(Arrays.stream(arrNames1).collect(Collectors.toList()), Arrays.stream(arrNames2).collect(Collectors.toList()));
         if(!StringUtils.isNullOrEmpty(errorMsg) && errorMsg.length()>0){
             return new ResponseVO(ParentCommonStatusCode.FAILURE.getCode(),errorMsg,errorMsg);
         }
 
        List<ActorDTO> actorDTOList = new ArrayList<>();
-       //check if firstname and last name does not exist
        for (int i = 0; i < arrNames1.length; i++) {
           // boolean isExist = actorMapper.checkBothFirstLastNames(arrNames1[i], arrNames2[i]);
           // if (!isExist) {
