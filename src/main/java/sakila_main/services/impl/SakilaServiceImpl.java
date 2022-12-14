@@ -87,6 +87,21 @@ public class SakilaServiceImpl implements SakilaService {
         String [] arrNames1 = firstName.split(",");
         String [] arrNames2 = lastName.split(",");
 
+        //check if name exist
+       for (String firstnames: arrNames1) {
+           String fName = actorMapper.checkFirstName(firstnames);
+           System.out.println("fName" + fName);
+           for (String lastnames: arrNames2) {
+               String lName = actorMapper.checkLastName(lastnames);
+               System.out.println("sheesh"+lName);
+               if(fName.equals(firstName) && lName.equals(lastnames)){
+                   return Collections.emptyList();
+               }
+           }
+
+       }
+
+
         //list
         List<String> fName = Stream.of(arrNames1).collect(Collectors.toList());
         List<String> lName = Stream.of(arrNames2).collect(Collectors.toList());

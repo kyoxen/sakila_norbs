@@ -14,6 +14,10 @@ public interface ActorMapper {
 
      ActorModel findActor(ActorDTO actorDTO);
 
+     String checkFirstName(String firstname);
+
+     String checkLastName(String lastname);
+
      List<ActorModel> getAllActors();
 
     // void setAllActorLastName(int actorId,String lastName);

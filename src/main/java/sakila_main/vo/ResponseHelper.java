@@ -26,6 +26,10 @@ public class ResponseHelper {
         return new ResponseVO(ParentCommonStatusCode.USER_EXIST);
     }
 
+    public static<T> ResponseVO<T> userExist(T data) {
+        return new ResponseVO(ParentCommonStatusCode.USER_EXIST,data);
+    }
+
     public static<T> ResponseVO<T> nullData() {
         return new ResponseVO(ParentCommonStatusCode.NULL_VALUE);
     }

@@ -64,6 +64,19 @@
         </foreach>
     </select>
 
+    <select id="checkFirstName" resultType="java.lang.String">
+        SELECT first_name FROM
+        actor WHERE first_name=#{firstname}
+    </select>
+
+
+    <select id="checkLastName" resultType="java.lang.String">
+        SELECT last_name FROM
+        actor WHERE last_name=#{lastname}
+    </select>
+
+
+
     <update id="updateActorLastName">
         UPDATE actor
         SET

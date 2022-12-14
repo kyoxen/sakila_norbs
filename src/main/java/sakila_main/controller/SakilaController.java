@@ -9,6 +9,7 @@ import sakila_main.vo.ResponseHelper;
 import sakila_main.vo.ResponseVO;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/sakila/")
@@ -42,7 +43,11 @@ public class SakilaController {
 
     @PostMapping("batchInsert/actor")
     public ResponseVO batchInsertActor(@RequestBody ActorDTO actorDTO) {
-        return ResponseHelper.success(sakilaService.batchInsertActor(actorDTO));
+        List<List<ActorDTO>> returnList = sakilaService.batchInsertActor(actorDTO);
+        if(returnList.isEmpty()){
+            return ResponseHelper.userExist(returnList);
+        }
+        return ResponseHelper.success();
     }
 
     @PostMapping("batchDelete/actor")
