@@ -22,6 +22,8 @@ public interface ActorMapper {
 
      List<ActorModel> getAllActors();
 
+     Integer countIds();
+
     // void setAllActorLastName(int actorId,String lastName);
 
      int batchInsert(@Param("list") List<ActorDTO> list);

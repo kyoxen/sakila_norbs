@@ -81,30 +81,31 @@ public class SakilaServiceImpl implements SakilaService {
 
 
    @Override
-    public Integer batchInsertActor(ActorDTO actorDTO){
+    public List<List<ActorDTO>> batchInsertActor(ActorDTO actorDTO){
         String firstName = actorDTO.getFirst_name();
         String lastName = actorDTO.getLast_name();
         String [] arrNames1 = firstName.split(",");
         String [] arrNames2 = lastName.split(",");
 
+
+       List<ActorDTO> actorDTOList = new ArrayList<>();
        //check if firstname and last name does not exist
-       for (String firstnames : arrNames1) {
-           for (String lastnames : arrNames2) {
-               boolean isExist = actorMapper.checkBothFirstLastNames(firstnames, lastnames);
-               if (!isExist) {
-                       ActorDTO acD = new ActorDTO();
-                       acD.setFirst_name(firstnames);
-                       acD.setLast_name(lastnames);
-                       acD.setCreated_at(LocalDateTime.now());
-                       acD.setLast_update("");
-                       actorMapper.insertSelective(acD);
-                   return 1;
-               } else {
-                   return 0;
-               }
+       for (int i = 0; i < arrNames1.length; i++) {
+           boolean isExist = actorMapper.checkBothFirstLastNames(arrNames1[i], arrNames2[i]);
+           if (!isExist) {
+               ActorDTO acD = new ActorDTO();
+               acD.setActor_id(actorMapper.countIds()+1);
+               acD.setFirst_name(arrNames1[i]);
+               acD.setLast_name(arrNames2[i]);
+               acD.setCreated_at(LocalDateTime.now());
+               acD.setLast_update("");
+               actorDTOList.add(acD);
+               actorMapper.insertSelective(acD);
            }
        }
-       return 0;
+       List<List<ActorDTO>> returnList = new ArrayList<>();
+       returnList.add(actorDTOList);
+       return returnList;
    }
 
     public List<String> updateLastNameBatchUpdate(ActorDTO actorDTO) {

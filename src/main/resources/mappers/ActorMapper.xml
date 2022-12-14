@@ -85,6 +85,11 @@
         ) as boolean
     </select>
 
+    <select id="countIds" resultType="java.lang.Integer">
+        SELECT * FROM actor
+        ORDER BY actor_id DESC LIMIT 1
+    </select>
+
 
     <update id="updateActorLastName">
         UPDATE actor
