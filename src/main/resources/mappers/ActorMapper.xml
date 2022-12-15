@@ -41,7 +41,10 @@
 
     <select id="getAllActors" resultMap="getActor">
         SELECT *
-        FROM actor
+        FROM actor where
+        <foreach collection="actorIds" close=")" open="actor_id in(" separator="," item="id">
+            #{id}
+        </foreach>
     </select>
 
 

@@ -20,7 +20,7 @@ public interface ActorMapper {
 
      String checkLastName(String lastname);
 
-     List<ActorModel> getAllActors();
+     List<ActorModel> getAllActors(ActorDTO actorDTO);
 
      Integer countIds();
 

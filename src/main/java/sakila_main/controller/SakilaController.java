@@ -22,8 +22,8 @@ public class SakilaController {
     ActorMapper actorMapper;
 
     @GetMapping("list/actor")
-    public ResponseVO getAllActors() {
-        return ResponseHelper.success(sakilaService.getAllActors());
+    public ResponseVO getAllActors(@RequestBody ActorDTO actorDTO) {
+        return ResponseHelper.success(sakilaService.getAllActors(actorDTO));
     }
 
     @PostMapping("find/actor")

@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public interface SakilaService {
 
-    List<ActorModel> getAllActors();
+    List<ActorModel> getAllActors(ActorDTO actorDTO);
 
     ActorModel findActor(ActorDTO actorDTO);
 

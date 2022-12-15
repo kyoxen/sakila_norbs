@@ -31,8 +31,8 @@ public class SakilaServiceImpl implements SakilaService {
     ActorMapper actorMapper;
 
 
-    public List<ActorModel> getAllActors() {
-        return actorMapper.getAllActors();
+    public List<ActorModel> getAllActors(ActorDTO actorDTO) {
+        return actorMapper.getAllActors(actorDTO);
     }
 
     public ActorModel findActor(ActorDTO actorDTO) {
