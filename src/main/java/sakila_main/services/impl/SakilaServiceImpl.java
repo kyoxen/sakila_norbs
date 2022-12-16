@@ -150,8 +150,7 @@ public class SakilaServiceImpl implements SakilaService {
     }
 
     public List<String> updateLastNameBatchUpdate(ActorDTO actorDTO) {
-        List<String> lista = Arrays.asList("norbs","sheesh");
-        Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids! " + lista );
+        Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids! ");
         Assert.isTrue(!actorDTO.getLast_name().isEmpty(),"Please enter last name!");
         String lastName  = actorDTO.getLast_name();
 
