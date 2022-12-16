@@ -126,21 +126,32 @@ public class SakilaServiceImpl implements SakilaService {
         Map<String, List<ActorDTO>> mapLastNamesInfo = listNamesInfo.stream().collect(Collectors.groupingBy(ActorDTO::getLast_name));
 
         StringBuffer errorMsg = new StringBuffer();
+        List<String> first = new ArrayList<>();
+        List<String> last = new ArrayList<>();
+        List<String> fullName = new ArrayList<>();
         for (String fName : firstName) {
             if (!CollectionUtil.isEmpty(mapFirstNamesInfo.get(fName))) {
-                errorMsg.append(StrUtil.format("First name [{}] already exist! ", fName));
+                first.add(fName);
             }
         }
         for (String lName : lastName) {
             if (!CollectionUtil.isEmpty(mapLastNamesInfo.get(lName))) {
-                errorMsg.append(StrUtil.format("Last name [{}] already exist! ", lName));
+                last.add(lName);
             }
         }
+
+        for (int i = 0; i < first.size(); i++) {
+            fullName.add(first.get(i) + " " + last.get(i));
+        }
+
+        errorMsg.append("Actor "+ fullName + " already exist!");
+
         return errorMsg.toString();
     }
 
     public List<String> updateLastNameBatchUpdate(ActorDTO actorDTO) {
-        Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids!");
+        List<String> lista = Arrays.asList("norbs","sheesh");
+        Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids! " + lista );
         Assert.isTrue(!actorDTO.getLast_name().isEmpty(),"Please enter last name!");
         String lastName  = actorDTO.getLast_name();
 
