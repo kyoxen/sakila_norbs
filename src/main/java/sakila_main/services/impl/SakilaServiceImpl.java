@@ -144,7 +144,10 @@ public class SakilaServiceImpl implements SakilaService {
             fullName.add(first.get(i) + " " + last.get(i));
         }
 
-        errorMsg.append("Actor "+ fullName + " already exist!");
+       // errorMsg.append("The following accounts " +fullName + " already exist!");
+      //  errorMsg.append(StrUtil.format("The following accounts {} already exist!", fullName.stream().collect(Collectors.joining(","))));
+        errorMsg.append(String.format("The following accounts [%s] already exist!", fullName.stream().collect(Collectors.joining(","))));
+
 
         return errorMsg.toString();
     }
