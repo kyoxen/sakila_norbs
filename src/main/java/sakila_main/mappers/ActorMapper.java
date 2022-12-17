@@ -1,9 +1,11 @@
 package sakila_main.mappers;
 
+import com.github.pagehelper.Page;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import sakila_main.dto.ActorDTO;
 import sakila_main.model.ActorModel;
+
 
 import java.util.List;
 
@@ -40,6 +42,8 @@ public interface ActorMapper {
      List<String> queryActors(@Param("list") List<Integer> ids);
 
      int lastNameBatchUpdate(@Param("list") List<Integer> ids , String lastName);
+
+     Page<ActorModel> exportActor();
 
 
 }

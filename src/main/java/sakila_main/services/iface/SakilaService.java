@@ -5,6 +5,7 @@ import sakila_main.dto.ActorDTO;
 import sakila_main.model.ActorModel;
 import sakila_main.vo.ResponseVO;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
 @Service
@@ -23,5 +24,7 @@ public interface SakilaService {
     List<String> getActorNames(ActorDTO actorDTO);
 
     Integer batchDeleteActor(ActorDTO actorDTO);
+
+    ByteArrayInputStream exportActor();
 
 }

@@ -12,11 +12,15 @@ import sakila_main.mappers.ActorMapper;
 import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
 import sakila_main.utils.CollectionUtil;
+//import sakila_main.utils.ExportActorCsvHelper;
+import sakila_main.utils.ExportActorCsvHelper;
 import sakila_main.utils.ListSplitUtil;
 import sakila_main.vo.ParentCommonStatusCode;
 import sakila_main.vo.ResponseHelper;
 import sakila_main.vo.ResponseVO;
 
+import javax.annotation.Resource;
+import java.io.ByteArrayInputStream;
 import java.sql.SQLOutput;
 import java.time.LocalDateTime;
 import java.util.*;
@@ -191,6 +195,13 @@ public class SakilaServiceImpl implements SakilaService {
         }
         result.add(subList);
         return result;
+    }
+
+    public ByteArrayInputStream exportActor() {
+        List<ActorModel> exportFile = actorMapper.exportActor();
+        log.info("exportFile: {}",exportFile);
+        ByteArrayInputStream download = ExportActorCsvHelper.exportHelperToCsv(exportFile);
+        return download;
     }
 
 

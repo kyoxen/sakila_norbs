@@ -1,5 +1,10 @@
 package sakila_main.controller;
 
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 import sakila_main.dto.ActorDTO;
@@ -8,9 +13,8 @@ import sakila_main.model.ActorModel;
 import sakila_main.services.iface.SakilaService;
 import sakila_main.vo.ResponseHelper;
 import sakila_main.vo.ResponseVO;
-
 import javax.annotation.Resource;
-import java.util.List;
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/api/sakila/")
@@ -70,6 +74,15 @@ public class SakilaController {
     @PostMapping("batchUpdateLastName/actor")
     public ResponseVO batchUpdateLastName(@RequestBody ActorDTO actorDTO) {
         return ResponseHelper.success(sakilaService.updateLastNameBatchUpdate(actorDTO));
+    }
+
+    @PostMapping("exportActor")
+    public ResponseEntity<Object> exportActor(){
+        InputStreamResource file = new InputStreamResource(sakilaService.exportActor());
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename=" + LocalDate.now()+"Export_Report.csv")
+                .contentType(MediaType.parseMediaType("application/csv"))
+                .body(file);
     }
 
 
