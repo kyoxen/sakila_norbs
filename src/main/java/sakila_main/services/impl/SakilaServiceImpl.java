@@ -101,7 +101,8 @@ public class SakilaServiceImpl implements SakilaService {
 
        //check if firstname and last name does not exist
         String errorMsg=verifyNames(Arrays.stream(arrNames1).collect(Collectors.toList()), Arrays.stream(arrNames2).collect(Collectors.toList()));
-        if(!StringUtils.isNullOrEmpty(errorMsg) && errorMsg.length()>0){
+        if(!StringUtils.isNullOrEmpty(errorMsg) && errorMsg.length()>2){
+            errorMsg ="The following names "+ errorMsg + " already exist!";
             return new ResponseVO(ParentCommonStatusCode.FAILURE.getCode(),errorMsg,errorMsg);
         }
 
@@ -150,7 +151,7 @@ public class SakilaServiceImpl implements SakilaService {
 
        // errorMsg.append("The following accounts " +fullName + " already exist!");
       //  errorMsg.append(StrUtil.format("The following accounts {} already exist!", fullName.stream().collect(Collectors.joining(","))));
-        errorMsg.append(String.format("The following accounts [%s] already exist!", fullName.stream().collect(Collectors.joining(","))));
+        errorMsg.append(String.format("[%s]", fullName.stream().collect(Collectors.joining(","))));
 
 
         return errorMsg.toString();
