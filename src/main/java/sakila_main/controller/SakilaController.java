@@ -51,6 +51,9 @@ public class SakilaController {
 
     @PostMapping("batchDelete/actor")
     public ResponseVO batchDeleteActor(@RequestBody ActorDTO actorDTO) {
+        if(actorDTO.getActorIds().isEmpty()) {
+            return ResponseHelper.error("Please enter ids!");
+        }
         return sakilaService.batchDeleteActor(actorDTO);
     }
 
@@ -68,6 +71,12 @@ public class SakilaController {
 
     @PostMapping("batchUpdateLastName/actor")
     public ResponseVO batchUpdateLastName(@RequestBody ActorDTO actorDTO) {
+        if(actorDTO.getActorIds().isEmpty()) {
+            return ResponseHelper.error("Please enter ids!");
+        }
+        if(actorDTO.getLast_name()==null || actorDTO.getLast_name().isEmpty()) {
+            return ResponseHelper.error("Please enter last name!");
+        }
         return ResponseHelper.success(sakilaService.updateLastNameBatchUpdate(actorDTO));
     }
 

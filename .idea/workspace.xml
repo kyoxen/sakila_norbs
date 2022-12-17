@@ -4,15 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="clean code">
+    <list default="true" id="7e429a99-be94-416d-8ae9-89efe69e994b" name="Changes" comment="optimized codes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/controller/SakilaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ParentCommonStatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ParentCommonStatusCode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ResponseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ResponseHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/ActorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/ActorMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +300,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671270352828</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="optimized codes">
+      <created>1671271141351</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1671271141351</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -333,7 +334,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="chrollo naupdate ko na" />
     <MESSAGE value="batchInsert function" />
     <MESSAGE value="batchInsert function fix" />
     <MESSAGE value="batchInsert function final fix" />
@@ -358,7 +358,8 @@
     <MESSAGE value="fix batch Insert validation" />
     <MESSAGE value="update validation for batchDeleteActor" />
     <MESSAGE value="clean code" />
-    <option name="LAST_COMMIT_MESSAGE" value="clean code" />
+    <MESSAGE value="optimized codes" />
+    <option name="LAST_COMMIT_MESSAGE" value="optimized codes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

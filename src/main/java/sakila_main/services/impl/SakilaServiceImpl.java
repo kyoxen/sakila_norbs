@@ -166,10 +166,7 @@ public class SakilaServiceImpl implements SakilaService {
 
 
     public List<ActorModel> updateLastNameBatchUpdate(ActorDTO actorDTO) {
-        Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids! ");
-        Assert.isTrue(!actorDTO.getLast_name().isEmpty(),"Please enter last name!");
         String lastName  = actorDTO.getLast_name();
-
         List<List<Integer>> splitIds = split(actorDTO.getActorIds(),20);
         for (List<Integer> list: splitIds) {
             actorMapper.lastNameBatchUpdate(list,lastName);
