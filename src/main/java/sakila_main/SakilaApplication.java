@@ -22,9 +22,9 @@ public class SakilaApplication {
         System.out.print(lastname);*/
         SpringApplication.run(SakilaApplication.class, args);
 
-        for (int i = 4208; i <= 4328 ; i++) {
+     /*   for (int i = 4208; i <= 4328 ; i++) {
             System.out.print(i+",");
-        }
+        }*/
 
 
     }
