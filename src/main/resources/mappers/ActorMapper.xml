@@ -70,8 +70,11 @@
         FROM actor where actor_id =#{id}
     </select>
 
-    <select id="queryActors" resultType="java.lang.String">
-        select CONCAT_WS(" ",first_name,last_name) as actorName
+    <select id="queryActors" resultType="sakila_main.model.ActorModel">
+        select
+        actor_id as actorId,
+        first_name as firstName,
+        last_name as lastName
         from actor
         where
         <foreach collection="list" close=")" open="actor_id in(" separator="," item="id">

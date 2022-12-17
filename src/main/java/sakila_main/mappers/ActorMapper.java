@@ -43,7 +43,7 @@ public interface ActorMapper {
      int ifIdExist(Integer id);
 
 
-     List<String> queryActors(@Param("list") List<Integer> ids);
+     List<ActorModel> queryActors(@Param("list") List<Integer> ids);
 
      int lastNameBatchUpdate(@Param("list") List<Integer> ids , String lastName);
 

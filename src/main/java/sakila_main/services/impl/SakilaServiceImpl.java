@@ -165,7 +165,7 @@ public class SakilaServiceImpl implements SakilaService {
     }
 
 
-    public List<String> updateLastNameBatchUpdate(ActorDTO actorDTO) {
+    public List<ActorModel> updateLastNameBatchUpdate(ActorDTO actorDTO) {
         Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids! ");
         Assert.isTrue(!actorDTO.getLast_name().isEmpty(),"Please enter last name!");
         String lastName  = actorDTO.getLast_name();
@@ -178,12 +178,12 @@ public class SakilaServiceImpl implements SakilaService {
         return getActorNames(actorDTO);
     }
 
-    public List<String> getActorNames(ActorDTO actorDTO){
+    public List<ActorModel> getActorNames(ActorDTO actorDTO){
         List<Integer> actorIds = actorDTO.getActorIds();
         List<List<Integer>> actors = ListSplitUtil.split(actorIds, 20);
-        List<String> result = new ArrayList<>();
+        List<ActorModel> result = new ArrayList<>();
         for (List<Integer> list : actors) {
-            List<String> ids = actorMapper.queryActors(list);
+            List<ActorModel> ids = actorMapper.queryActors(list);
                 result.addAll(ids);
         }
         return result;

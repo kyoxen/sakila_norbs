@@ -10,6 +10,8 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/mappers/ActorMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/iface/SakilaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/services/impl/SakilaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ParentCommonStatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ParentCommonStatusCode.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ResponseHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/sakila_main/vo/ResponseHelper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/ActorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/ActorMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -290,7 +292,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671268453143</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="update validation for batchDeleteActor">
+      <created>1671270266490</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1671270266490</updated>
+    </task>
+    <task id="LOCAL-00031" summary="clean code">
+      <created>1671270352828</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1671270352828</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -340,6 +356,7 @@
     <MESSAGE value="batcn Insert update verifyNames" />
     <MESSAGE value="optimize code" />
     <MESSAGE value="fix batch Insert validation" />
+    <MESSAGE value="update validation for batchDeleteActor" />
     <MESSAGE value="clean code" />
     <option name="LAST_COMMIT_MESSAGE" value="clean code" />
   </component>

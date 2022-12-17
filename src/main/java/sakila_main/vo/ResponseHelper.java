@@ -18,6 +18,10 @@ public class ResponseHelper {
         return new ResponseVO(ParentCommonStatusCode.FAILURE);
     }
 
+    public static<T> ResponseVO<T> error(String message) {
+        return new ResponseVO(ParentCommonStatusCode.NO_INPUT, message);
+    }
+
     public static<T> ResponseVO<T> unauthorized() {
         return new ResponseVO(ParentCommonStatusCode.UNAUTHORIZED);
     }

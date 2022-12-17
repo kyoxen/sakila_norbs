@@ -19,9 +19,9 @@ public interface SakilaService {
 
     ResponseVO batchInsertActor(ActorDTO actorDTO);
 
-    List<String> updateLastNameBatchUpdate(ActorDTO actorDTO);
+    List<ActorModel> updateLastNameBatchUpdate(ActorDTO actorDTO);
 
-    List<String> getActorNames(ActorDTO actorDTO);
+    List<ActorModel> getActorNames(ActorDTO actorDTO);
 
     ResponseVO batchDeleteActor(ActorDTO actorDTO);
 

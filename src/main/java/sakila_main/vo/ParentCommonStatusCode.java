@@ -4,6 +4,8 @@ public class ParentCommonStatusCode {
 
     public  static final ServiceStatusCode SUCCESS = new ServiceStatusCode(200,"Successful Operation");
     public  static final ServiceStatusCode FAILURE = new ServiceStatusCode(500,"An exception occurred in the server side!");
+
+    public  static final ServiceStatusCode NO_INPUT = new ServiceStatusCode(500,"No Data Input!");
     public  static final ServiceStatusCode NOT_ACCEPTABLE = new ServiceStatusCode(200,"The Input Data is Not Acceptable!");
     public  static final ServiceStatusCode UNAUTHORIZED = new ServiceStatusCode(200,"Username or Password is Incorrect");
     public  static final ServiceStatusCode FORBIDDEN = new ServiceStatusCode(200,"Authorization Failed!");

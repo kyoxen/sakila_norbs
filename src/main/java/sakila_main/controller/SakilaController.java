@@ -56,7 +56,9 @@ public class SakilaController {
 
     @PostMapping("batchSelect/actor")
     public ResponseVO getActorNames(@RequestBody ActorDTO actorDTO) {
-        Assert.isTrue(!actorDTO.getActorIds().isEmpty(), "Please enter an ids!");
+        if(actorDTO.getActorIds().isEmpty()) {
+            return ResponseHelper.error("Please enter ids!");
+        }
         return ResponseHelper.success(sakilaService.getActorNames(actorDTO));
         //request body parameter
         //{
