@@ -28,6 +28,10 @@ public interface ActorMapper {
 
      List<ActorDTO> verifyNames(@Param("fName") List<String> fName, @Param("lName")List<String> lName);
 
+     List<ActorDTO> verifyIds(@Param("ids") List<Integer> ids);
+
+
+
     // void setAllActorLastName(int actorId,String lastName);
 
      int batchInsert(@Param("list") List<ActorDTO> list);

@@ -23,7 +23,7 @@ public interface SakilaService {
 
     List<String> getActorNames(ActorDTO actorDTO);
 
-    Integer batchDeleteActor(ActorDTO actorDTO);
+    ResponseVO batchDeleteActor(ActorDTO actorDTO);
 
     ByteArrayInputStream exportActor();
 

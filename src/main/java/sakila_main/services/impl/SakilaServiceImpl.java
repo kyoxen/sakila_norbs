@@ -68,21 +68,20 @@ public class SakilaServiceImpl implements SakilaService {
 
 
     @Override
-    public Integer batchDeleteActor(ActorDTO actorDTO) {
+    public ResponseVO batchDeleteActor(ActorDTO actorDTO) {
     /*   String[] actorIds = String.valueOf(actorDTO.getActor_id()).split(",");
        List<Integer> Ids = Stream.of(actorIds).map(Integer::valueOf).collect(Collectors.toList());*/
 
         List<Integer> splitIds = actorDTO.getActorIds();
         //check if id exist
-        for (Integer i: splitIds) {
-           Integer row = actorMapper.ifIdExist(i);
-            if(row==0) {
-                return i;
-            } else {
-                actorMapper.batchDeleteByIds(splitIds);
-            }
+        String errorMsg=verifyIds(actorDTO.getActorIds());
+        if(!StringUtils.isNullOrEmpty(errorMsg) && errorMsg.length()>2){
+            errorMsg ="The following ids "+ errorMsg + " does not exist!";
+            System.out.println(errorMsg);
+            return new ResponseVO(ParentCommonStatusCode.FAILURE.getCode(),errorMsg,errorMsg);
         }
-       return 0;
+        actorMapper.batchDeleteByIds(splitIds);
+       return ResponseHelper.success("Successfully deleted Ids " + actorDTO.getActorIds());
     }
 
 
@@ -150,6 +149,22 @@ public class SakilaServiceImpl implements SakilaService {
 
         return errorMsg.toString();
     }
+
+
+    public String verifyIds(List<Integer> ids) {
+        List<ActorDTO> listIds = actorMapper.verifyIds(ids);
+        Map<Integer, List<ActorDTO>> mapIds = listIds.stream().collect(Collectors.groupingBy(ActorDTO::getActor_id));
+        StringBuffer errorMsg = new StringBuffer();
+        List<Integer> idsList = new ArrayList<>();
+        for (Integer id : ids) {
+            if (CollectionUtil.isEmpty(mapIds.get(id))) {
+                idsList.add(id);
+            }
+        }
+        errorMsg.append(String.format("[%s]", idsList.stream().map(String::valueOf).collect(Collectors.joining(","))));
+        return errorMsg.toString();
+    }
+
 
     public List<String> updateLastNameBatchUpdate(ActorDTO actorDTO) {
         Assert.isTrue(!actorDTO.getActorIds().isEmpty(),"Please enter ids! ");

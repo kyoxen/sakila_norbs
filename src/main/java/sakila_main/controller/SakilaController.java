@@ -51,11 +51,7 @@ public class SakilaController {
 
     @PostMapping("batchDelete/actor")
     public ResponseVO batchDeleteActor(@RequestBody ActorDTO actorDTO) {
-        int row = sakilaService.batchDeleteActor(actorDTO);
-        if (row == 0) {
-            return ResponseHelper.success();
-        }
-        return ResponseHelper.nullData(sakilaService.batchDeleteActor(actorDTO));
+        return sakilaService.batchDeleteActor(actorDTO);
     }
 
     @PostMapping("batchSelect/actor")
