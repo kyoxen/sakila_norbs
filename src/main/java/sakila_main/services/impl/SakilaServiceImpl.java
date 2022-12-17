@@ -77,7 +77,6 @@ public class SakilaServiceImpl implements SakilaService {
         String errorMsg=verifyIds(actorDTO.getActorIds());
         if(!StringUtils.isNullOrEmpty(errorMsg) && errorMsg.length()>2){
             errorMsg ="The following ids "+ errorMsg + " does not exist!";
-            System.out.println(errorMsg);
             return new ResponseVO(ParentCommonStatusCode.FAILURE.getCode(),errorMsg,errorMsg);
         }
         actorMapper.batchDeleteByIds(splitIds);
